@@ -106,6 +106,7 @@ public class AddNewList extends BottomSheetDialogFragment {
                 String table_naja = newTableText.getText().toString();
                 String text = newTaskText.getText().toString();
                 if(finalIsUpdate){
+                    db.updateTable(bundle.getInt("id"), table_naja);
                     db.updateTask(bundle.getInt("id"), text);
                 }
                 else {
