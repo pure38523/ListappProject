@@ -1,5 +1,6 @@
 language: android
 dist: trusty
+sudo: false
 android:
   components:
     # The BuildTools version used by your project
@@ -25,16 +26,19 @@ cache:
 before_install:
   - yes | sdkmanager "platforms;android-30"
 
-script:
-  - ./gradlew
-  - ./gradlew test
-  - ./gradlew assembleDebug
-
-
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_API_KEY  # Set in the settings page of your repository, as a secure variable
-  keep_history: true
-  on:
-    branch: master
+jobs:
+  include:
+    - stage: Build
+      script: ./gradlew build
+    - stage: Test
+      script: ./gradlew test
+      script: ./gradlew testDebug
+    - stage: GitHub Deploy
+      script: echo "Deploying ..."
+      deploy:
+        provider: pages
+        github_token: $GITHUB_API_KEY
+        skip_cleanup: true
+        keep_history: true
+        on:
+          branch: master
