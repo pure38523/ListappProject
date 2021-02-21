@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,49 +17,33 @@
             android:hint="New Table"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
+        <EditText
+            android:layout_marginTop="24dp"
+            android:id="@+id/newTaskText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="New Task"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/newTaskText"
-                android:layout_width="match_parent"
+            android:orientation="horizontal">
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+            <Button
+                android:id="@+id/newTaskButton"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:hint="New Task"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
-
-            <EditText
-                android:layout_marginTop="24dp"
-                android:id="@+id/newTaskText2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:hint="New Task"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-
-                <Button
-                    android:id="@+id/newTaskButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:text="Save"
-                    android:textAllCaps="false"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="16sp" />
-            </LinearLayout>
+                android:background="@android:color/transparent"
+                android:text="Save"
+                android:textAllCaps="false"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="16sp" />
         </LinearLayout>
-
     </LinearLayout>
 
 </RelativeLayout>
