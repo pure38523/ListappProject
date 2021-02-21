@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.dechproduct.s23dquizapplication.Model.MenuNote;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,8 +20,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String MN_TABLE = "table_naja";
     private static final String TASK = "task";
     private static final String STATUS = "status";
-    private static final String CREATE_TODO_TABLE = "CREATE TABLE " + TODO_TABLE + "(" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + MN_TABLE + " TEXT, " + TASK + " TEXT, "
-            + STATUS + " INTEGER)";
+    private static final String CREATE_TODO_TABLE = "CREATE TABLE " + TODO_TABLE + "(" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + MN_TABLE + " TEXT, " + TASK + " TEXT, " + STATUS + " INTEGER)";
 
     private SQLiteDatabase db;
 
