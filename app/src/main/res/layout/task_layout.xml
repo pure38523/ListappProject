@@ -11,7 +11,7 @@
     android:layout_marginVertical="8dp"
     >
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp">
 
@@ -19,17 +19,27 @@
             android:id="@+id/firstCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="test text 123456789abcdefg"
-            android:paddingStart="8dp"
+            tools:text="tffdfsfdwesd"
+            android:gravity="center"
             android:buttonTint="@android:color/holo_orange_dark"
-
             >
 
         </CheckBox>
 
+        <TextView
+            android:layout_weight="0.5"
+            android:id="@+id/firstCheckBox2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="12"
+            android:text="1000"
+            android:layout_marginTop="15dp"
+            android:gravity="end"
+            android:buttonTint="@android:color/holo_orange_dark"
+            >
 
+        </TextView>
 
     </RelativeLayout>
-
 
 </androidx.cardview.widget.CardView>
