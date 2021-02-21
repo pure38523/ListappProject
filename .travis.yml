@@ -13,6 +13,8 @@ android:
     - extra-android-m2repository
     - tools
     - platform-tools
+before_install:
+  - chmod +x gradlew
 script:
   - ./gradlew test
 
