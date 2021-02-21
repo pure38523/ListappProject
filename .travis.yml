@@ -14,6 +14,6 @@ android:
     - tools
     - platform-tools
 scripts:
-  -./gradlew test
+  - ./gradlew test
 
 
