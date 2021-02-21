@@ -60,19 +60,17 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
             }
         });
 
-        //Pre-Init
-        MenuNote task = new MenuNote();
-        task.setTable("14");
-        task.setTask("Kao Man Gai 1");
-        task.setStatus(0);
+    //    //Pre-Init
+    //    MenuNote task = new MenuNote();
+    //    task.setTable("14");
+    //    task.setTask("Kao Man Gai 1");
+    //    task.setStatus(0);
 
-        taskList.add(task);
-        taskList.add(task);
-        taskList.add(task);
-        taskList.add(task);
-
-        taskAdapter.setTasks(taskList);
-
+    //    taskList.add(task);
+    //    taskList.add(task);
+    //    taskList.add(task);
+    //    taskList.add(task);
+    //    taskAdapter.setTasks(taskList);
 
     }
 
