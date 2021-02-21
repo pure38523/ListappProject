@@ -29,7 +29,7 @@ before_install:
   - yes | sdkmanager "platforms;android-30"
 
 script:
-  - ./gradlew
+  - ./gradlew build
   - ./gradlew test
   - ./gradlew assembleDebug
 
