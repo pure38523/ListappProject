@@ -28,7 +28,5 @@ before_install:
 script:
   - ./gradlew
   - ./gradlew test
-  - ./gradlew testDebug
-  - ./gradlew testRelease
 
 
