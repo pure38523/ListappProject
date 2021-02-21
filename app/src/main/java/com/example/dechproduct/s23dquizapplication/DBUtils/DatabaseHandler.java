@@ -18,10 +18,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String NAME = "toDoListDatabase";
     private static final String TODO_TABLE = "todo";
     private static final String ID = "id";
-    private static final String MN_TABLE = "mn_table";
+    private static final String MN_TABLE = "table_naja";
     private static final String TASK = "task";
     private static final String STATUS = "status";
-    private static final String CREATE_TODO_TABLE = "CREATE TABLE " + TODO_TABLE + "(" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + TASK + " TEXT, "
+    private static final String CREATE_TODO_TABLE = "CREATE TABLE " + TODO_TABLE + "(" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + MN_TABLE + " TEXT, " + TASK + " TEXT, "
             + STATUS + " INTEGER)";
 
     private SQLiteDatabase db;
@@ -51,6 +51,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public void insertTask(MenuNote task){
         ContentValues cv = new ContentValues();
+        cv.put(MN_TABLE, task.getTable());
         cv.put(TASK, task.getTask());
         cv.put(STATUS, 0);
         db.insert(TODO_TABLE, null, cv);
@@ -67,6 +68,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     do{
                         MenuNote task = new MenuNote();
                         task.setId(cur.getInt(cur.getColumnIndex(ID)));
+                        task.setTable(cur.getString(cur.getColumnIndex(MN_TABLE)));
                         task.setTask(cur.getString(cur.getColumnIndex(TASK)));
                         task.setStatus(cur.getInt(cur.getColumnIndex(STATUS)));
                         taskList.add(task);
@@ -93,6 +95,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put(TASK, task);
         db.update(TODO_TABLE, cv, ID + "= ?", new String[] {String.valueOf(id)});
+    }
+
+    public void updateTable(int id, String table_naja) {
+        ContentValues cv = new ContentValues();
+        cv.put(MN_TABLE, table_naja);
+        db.update(TODO_TABLE, cv,ID + "= ?", new String[] {String.valueOf(id)});
     }
 
     public void deleteTask(int id){

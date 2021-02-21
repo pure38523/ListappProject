@@ -26,6 +26,7 @@ import java.util.Objects;
 public class AddNewList extends BottomSheetDialogFragment {
 
  public static final String TAG = "ActionBottomDialog";
+    private EditText newTableText;
     private EditText newTaskText;
     private Button newTaskSaveButton;
 
@@ -55,6 +56,7 @@ public class AddNewList extends BottomSheetDialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        newTableText = Objects.requireNonNull(getView()).findViewById(R.id.newTableText);
         newTaskText = Objects.requireNonNull(getView()).findViewById(R.id.newTaskText);
         newTaskSaveButton = getView().findViewById(R.id.newTaskButton);
 
@@ -63,10 +65,12 @@ public class AddNewList extends BottomSheetDialogFragment {
         final Bundle bundle = getArguments();
         if(bundle != null){
             isUpdate = true;
+            String table_naja = bundle.getString("table_naja");
+            newTableText.setText(table_naja);
             String task = bundle.getString("task");
             newTaskText.setText(task);
-            assert task != null;
-            if(task.length()>0)
+            assert ((task != null) & (table_naja != null));
+            if((task.length()>0) & (table_naja.length()>0))
                 newTaskSaveButton.setTextColor(ContextCompat.getColor(Objects.requireNonNull(getContext()), R.color.colorPrimaryOrange));
         }
 
@@ -99,12 +103,14 @@ public class AddNewList extends BottomSheetDialogFragment {
         newTaskSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String table_naja = newTableText.getText().toString();
                 String text = newTaskText.getText().toString();
                 if(finalIsUpdate){
                     db.updateTask(bundle.getInt("id"), text);
                 }
                 else {
                     MenuNote task = new MenuNote();
+                    task.setTable(table_naja);
                     task.setTask(text);
                     task.setStatus(0);
                     db.insertTask(task);
