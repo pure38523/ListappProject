@@ -1,5 +1,6 @@
 language: android
 dist: trusty
+sudo: false
 android:
   components:
     # The BuildTools version used by your project
@@ -27,14 +28,17 @@ before_install:
 
 jobs:
   include:
-    - stages: Testing
+    - stage: Build
+      script: ./gradlew build
+    - stage: Test
       script: ./gradlew test
       script: ./gradlew testDebug
     - stage: GitHub Deploy
       script: echo "Deploying ..."
       deploy:
         provider: pages
-        api_key: $GITHUB_API_KEY
+        github_token: $GITHUB_API_KEY
         skip_cleanup: true
+        keep_history: true
         on:
           branch: master
