@@ -3,18 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-    <EditText
-        android:id="@+id/newTableText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:hint="New Table"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
     <EditText
         android:id="@+id/newTaskText"
@@ -36,6 +24,8 @@
         android:background="@android:color/transparent"
         android:textColor="@android:color/darker_gray"/>
 
-    </LinearLayout>
+
+
+
 
 </RelativeLayout>
