@@ -1,32 +1,25 @@
 package com.example.dechproduct.s23dquizapplication.Adapter;
 
-import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.dechproduct.s23dquizapplication.AddNewList;
-import com.example.dechproduct.s23dquizapplication.DBUtils.DatabaseHandler;
 import com.example.dechproduct.s23dquizapplication.MainActivity;
-import com.example.dechproduct.s23dquizapplication.Model.MenuNote;
+import com.example.dechproduct.s23dquizapplication.Model.ModelMock;
 import com.example.dechproduct.s23dquizapplication.R;
 
 import java.util.List;
 
 public class S23DAdapter extends RecyclerView.Adapter<S23DAdapter.ViewHolder> {
 
-    private List<MenuNote> MenuNoteList;
+    private List<ModelMock> taskList;
     private MainActivity activity;
-    private DatabaseHandler db;
 
-    public S23DAdapter(DatabaseHandler db, MainActivity activity){
-        this.db = db;
+    public S23DAdapter(MainActivity activity){
         this.activity = activity;
 }
 
@@ -41,22 +34,9 @@ public class S23DAdapter extends RecyclerView.Adapter<S23DAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-     db.openDatabase();
-     MenuNote item = MenuNoteList.get(position);
+     ModelMock item = taskList.get(position);
      holder.task.setText(item.getTask());
      holder.task.setChecked(toBoolean(item.getStatus()));
-     //add holder
-     holder.task.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-         @Override
-         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-             if (isChecked){
-                 db.updateStatus(item.getId(),1);
-             }
-             else {
-                 db.updateStatus(item.getId(),0);
-             }
-         }
-     });
     }
 
     private  Boolean toBoolean(int n){
@@ -65,38 +45,14 @@ public class S23DAdapter extends RecyclerView.Adapter<S23DAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return MenuNoteList.size();
+        return taskList.size();
     }
 
-
-    public void setTasks(List<MenuNote> MenuNoteList){
-        this.MenuNoteList = MenuNoteList;
+    public void setTasks(List<ModelMock> modelMockList){
+        this.taskList = modelMockList;
         notifyDataSetChanged();
-    }
-
-    public Context getContext(){
-        return activity;
-    }
-
-    public void editItem(int position){
-        MenuNote item = MenuNoteList.get(position);
-        Bundle bundle = new Bundle();
-        bundle.putInt("id",item.getId());
-        bundle.putString("task", item.getTask());
-        AddNewList fragment = new AddNewList();
-        fragment.setArguments(bundle);
-        fragment.show(activity.getSupportFragmentManager(),AddNewList.TAG);
 
     }
-
-    //delete item
-    public void deleteItem(int position){
-        MenuNote item  = MenuNoteList.get(position);
-        db.deleteTask(item.getId());
-        MenuNoteList.remove(position);
-        notifyItemRemoved(position);
-    }
-
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         CheckBox task;
@@ -106,6 +62,4 @@ public class S23DAdapter extends RecyclerView.Adapter<S23DAdapter.ViewHolder> {
              task = view.findViewById(R.id.firstCheckBox);
         }
     }
-
-
 }
