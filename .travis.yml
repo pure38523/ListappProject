@@ -1,5 +1,6 @@
 language: android
 dist: trusty
+sudo: false
 android:
   components:
     # The BuildTools version used by your project
@@ -11,11 +12,11 @@ android:
     # Additional components
     - extra-google-m2repository
     - extra-android-m2repository
-
+    - tools
+    - platform-tools
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
-  -
 cache:
   directories:
     - $HOME/.gradle/caches/
@@ -27,20 +28,6 @@ cache:
 before_install:
   - yes | sdkmanager "platforms;android-30"
 
-#jobs:
-#  include:
-#    - script: ./
-#    - script: ./gradlew test
-#    - script: ./gradlew testDebug
-#    - stage: GitHub Deploy
-#      script: echo "Deploying ..."
-#      deploy:
-#        provider: pages
-#        github_token: $GITHUB_API_KEY
-#        skip_cleanup: true
-#
-#        on:
-#          branch: master
 script:
   - ./gradlew
   - ./gradlew test
@@ -54,6 +41,3 @@ deploy:
   keep_history: true
   on:
     branch: master
-
-
-
