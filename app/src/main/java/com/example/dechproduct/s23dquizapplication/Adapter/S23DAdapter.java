@@ -44,12 +44,11 @@ public class S23DAdapter extends RecyclerView.Adapter<S23DAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
      db.openDatabase();
      MenuNote item = MenuNoteList.get(position);
-     holder.task.setText(item.getTable());
      holder.task.setText(item.getTask());
      holder.task.setChecked(toBoolean(item.getStatus()));
 	 
 	 //text table
-	 holder.task2.setText(item.getTask());
+	 holder.task2.setText(item.getTable());
 	 
      //add holder
      holder.task.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
