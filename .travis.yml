@@ -13,7 +13,7 @@ android:
     - extra-android-m2repository
     - tools
     - platform-tools
-scripts:
+script:
   - ./gradlew test
 
 
