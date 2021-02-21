@@ -21,10 +21,11 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
     - $HOME/.android/build-cache
+
 before_install:
-  - chmod +x gradlew
+  - - yes | sdkmanager "platforms;android-30"
+
 script:
   - ./gradlew test
-  - ./gradlew ExampleInstrumentedTest
 
 
