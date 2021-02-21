@@ -14,14 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.dechproduct.s23dquizapplication.AddNewList;
 import com.example.dechproduct.s23dquizapplication.DBUtils.DatabaseHandler;
 import com.example.dechproduct.s23dquizapplication.MainActivity;
-import com.example.dechproduct.s23dquizapplication.Model.ModelMock;
+import com.example.dechproduct.s23dquizapplication.Model.MenuNote;
 import com.example.dechproduct.s23dquizapplication.R;
 
 import java.util.List;
 
 public class S23DAdapter extends RecyclerView.Adapter<S23DAdapter.ViewHolder> {
 
-    private List<ModelMock> modelMockList;
+    private List<MenuNote> MenuNoteList;
     private MainActivity activity;
     private DatabaseHandler db;
 
@@ -42,7 +42,7 @@ public class S23DAdapter extends RecyclerView.Adapter<S23DAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
      db.openDatabase();
-     ModelMock item = modelMockList.get(position);
+     MenuNote item = MenuNoteList.get(position);
      holder.task.setText(item.getTask());
      holder.task.setChecked(toBoolean(item.getStatus()));
      //add holder
@@ -65,12 +65,12 @@ public class S23DAdapter extends RecyclerView.Adapter<S23DAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return modelMockList.size();
+        return MenuNoteList.size();
     }
 
 
-    public void setTasks(List<ModelMock> modelMockList){
-        this.modelMockList = modelMockList;
+    public void setTasks(List<MenuNote> MenuNoteList){
+        this.MenuNoteList = MenuNoteList;
         notifyDataSetChanged();
     }
 
@@ -79,7 +79,7 @@ public class S23DAdapter extends RecyclerView.Adapter<S23DAdapter.ViewHolder> {
     }
 
     public void editItem(int position){
-        ModelMock item = modelMockList.get(position);
+        MenuNote item = MenuNoteList.get(position);
         Bundle bundle = new Bundle();
         bundle.putInt("id",item.getId());
         bundle.putString("task", item.getTask());
@@ -91,9 +91,9 @@ public class S23DAdapter extends RecyclerView.Adapter<S23DAdapter.ViewHolder> {
 
     //delete item
     public void deleteItem(int position){
-        ModelMock item  = modelMockList.get(position);
+        MenuNote item  = MenuNoteList.get(position);
         db.deleteTask(item.getId());
-        modelMockList.remove(position);
+        MenuNoteList.remove(position);
         notifyItemRemoved(position);
     }
 

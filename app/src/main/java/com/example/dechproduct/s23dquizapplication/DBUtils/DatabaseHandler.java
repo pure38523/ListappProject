@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.dechproduct.s23dquizapplication.Model.ModelMock;
+import com.example.dechproduct.s23dquizapplication.Model.MenuNote;
 
 
 import java.util.ArrayList;
@@ -18,6 +18,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String NAME = "toDoListDatabase";
     private static final String TODO_TABLE = "todo";
     private static final String ID = "id";
+    private static final String MN_TABLE = "mn_table";
     private static final String TASK = "task";
     private static final String STATUS = "status";
     private static final String CREATE_TODO_TABLE = "CREATE TABLE " + TODO_TABLE + "(" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + TASK + " TEXT, "
@@ -48,15 +49,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db = this.getWritableDatabase();
     }
 
-    public void insertTask(ModelMock task){
+    public void insertTask(MenuNote task){
         ContentValues cv = new ContentValues();
         cv.put(TASK, task.getTask());
         cv.put(STATUS, 0);
         db.insert(TODO_TABLE, null, cv);
     }
 
-    public List<ModelMock> getAllTasks(){
-        List<ModelMock> taskList = new ArrayList<>();
+    public List<MenuNote> getAllTasks(){
+        List<MenuNote> taskList = new ArrayList<>();
         Cursor cur = null;
         db.beginTransaction();
         try{
@@ -64,7 +65,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             if(cur != null){
                 if(cur.moveToFirst()){
                     do{
-                        ModelMock task = new ModelMock();
+                        MenuNote task = new MenuNote();
                         task.setId(cur.getInt(cur.getColumnIndex(ID)));
                         task.setTask(cur.getString(cur.getColumnIndex(TASK)));
                         task.setStatus(cur.getInt(cur.getColumnIndex(STATUS)));

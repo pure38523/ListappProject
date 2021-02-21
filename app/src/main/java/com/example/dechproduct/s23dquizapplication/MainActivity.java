@@ -1,24 +1,22 @@
 package com.example.dechproduct.s23dquizapplication;
 
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.DialogInterface;
-import android.os.Bundle;
-import android.view.View;
-
 import com.example.dechproduct.s23dquizapplication.Adapter.S23DAdapter;
 import com.example.dechproduct.s23dquizapplication.DBUtils.DatabaseHandler;
-import com.example.dechproduct.s23dquizapplication.Model.ModelMock;
+import com.example.dechproduct.s23dquizapplication.Model.MenuNote;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements DialogCloseListener {
 
@@ -26,9 +24,8 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
 
     private RecyclerView taskRecyclerView;
     private S23DAdapter taskAdapter;
-    private List<ModelMock> taskList;
+    private List<MenuNote> taskList;
     private FloatingActionButton floatingActionButton;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
 
 
 //Mock
-//        ModelMock task = new ModelMock();
+//        MenuNote task = new MenuNote();
 //        task.setTask("Test zaza Task Test");
 //        task.setStatus(0);
 //        task.setId(1);

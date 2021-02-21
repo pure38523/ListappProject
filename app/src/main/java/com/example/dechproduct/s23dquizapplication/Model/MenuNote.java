@@ -1,7 +1,8 @@
 package com.example.dechproduct.s23dquizapplication.Model;
 
-public class ModelMock {
+public class MenuNote {
     private int id,status;
+    private String table;
     private String task;
 
     public int getId() {
@@ -27,4 +28,10 @@ public class ModelMock {
     public void setTask(String task) {
         this.task = task;
     }
+
+    public String getTable() {
+        return table;
+    }
+
+    public void setTable(String table) { this.table = table; }
 }
