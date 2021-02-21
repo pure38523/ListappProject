@@ -1,0 +1,42 @@
+language: android
+dist: trusty
+android:
+  components:
+    # The BuildTools version used by your project
+    - build-tools-30.0.1
+
+    # The SDK version used to compile your project
+    - android-30
+
+    # Additional components
+    - extra-google-m2repository
+    - extra-android-m2repository
+    - tools
+    - platform-tools
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+    - $HOME/.android/build-cache
+
+before_install:
+  - yes | sdkmanager "platforms;android-30"
+
+script:
+  - ./gradlew
+  - ./gradlew test
+  - ./gradlew assembleDebug
+
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_API_KEY  # Set in the settings page of your repository, as a secure variable
+  keep_history: true
+  on:
+    branch: master
+
+
