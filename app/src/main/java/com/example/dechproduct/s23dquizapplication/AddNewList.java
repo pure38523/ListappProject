@@ -18,7 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
 import com.example.dechproduct.s23dquizapplication.DBUtils.DatabaseHandler;
-import com.example.dechproduct.s23dquizapplication.Model.ModelMock;
+import com.example.dechproduct.s23dquizapplication.Model.MenuNote;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.Objects;
@@ -104,7 +104,7 @@ public class AddNewList extends BottomSheetDialogFragment {
                     db.updateTask(bundle.getInt("id"), text);
                 }
                 else {
-                    ModelMock task = new ModelMock();
+                    MenuNote task = new MenuNote();
                     task.setTask(text);
                     task.setStatus(0);
                     db.insertTask(task);
