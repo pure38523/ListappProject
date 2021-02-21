@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -46,6 +47,10 @@ public class S23DAdapter extends RecyclerView.Adapter<S23DAdapter.ViewHolder> {
      holder.task.setText(item.getTable());
      holder.task.setText(item.getTask());
      holder.task.setChecked(toBoolean(item.getStatus()));
+	 
+	 //text table
+	 holder.task2.setText(item.getTask());
+	 
      //add holder
      holder.task.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
          @Override
@@ -102,10 +107,12 @@ public class S23DAdapter extends RecyclerView.Adapter<S23DAdapter.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         CheckBox task;
+		TextView task2;
 
          ViewHolder(View view) {
              super(view);
              task = view.findViewById(R.id.firstCheckBox);
+			 task2 = view.findViewById(R.id.firstCheckBox2);
         }
     }
 
