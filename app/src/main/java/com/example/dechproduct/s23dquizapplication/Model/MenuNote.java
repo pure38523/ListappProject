@@ -2,7 +2,7 @@ package com.example.dechproduct.s23dquizapplication.Model;
 
 public class MenuNote {
     private int id,status;
-    private String table;
+    private String table_naja;
     private String task;
 
     public int getId() {
@@ -30,8 +30,8 @@ public class MenuNote {
     }
 
     public String getTable() {
-        return table;
+        return table_naja;
     }
 
-    public void setTable(String table) { this.table = table; }
+    public void setTable(String table_naja) { this.table_naja = table_naja; }
 }
