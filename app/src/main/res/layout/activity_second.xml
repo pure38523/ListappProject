@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:text="S23D"
+        android:text="S23d Food Order List"
         android:textColor="@android:color/black"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"

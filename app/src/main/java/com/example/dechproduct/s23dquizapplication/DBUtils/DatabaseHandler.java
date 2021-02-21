@@ -60,7 +60,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Cursor cur = null;
         db.beginTransaction();
         try{
-            cur = db.query(TODO_TABLE, null, null, null, null, null, null, null);
+            cur = db.query(TODO_TABLE, null, null, null, null, null, "ID DESC", null);
             if(cur != null){
                 if(cur.moveToFirst()){
                     do{
